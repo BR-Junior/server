@@ -6,3 +6,6 @@ yaen-error.log
 .idea/codeStyles/Project.xml
 .idea/inspectionProfiles/Project_Default.xml
 .idea/jsLinters/eslint.xml
+.env
+.idea/vcs.xml
+yarn-error.log
