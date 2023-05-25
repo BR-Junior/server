@@ -1,0 +1,8 @@
+/node_modules
+yaen-error.log
+.idea/modules.xml
+.idea/server.iml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/Project.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/jsLinters/eslint.xml
