@@ -3,7 +3,7 @@ POST http://localhost:3333/user
 Content-Type: application/json
 
 {
-  "name": "teste",
+  "name": "teste id",
   "email": "testeteste.com",
   "password": "123"
 }

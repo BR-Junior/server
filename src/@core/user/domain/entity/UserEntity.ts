@@ -5,7 +5,7 @@ import {userEntitySchema} from './validation/userEntitySchema';
 
 
 export class UserEntity {
-  id?: string | null;
+  id: string;
   name: string;
   email: string;
   password: string;
@@ -13,6 +13,8 @@ export class UserEntity {
   constructor(name: string, email: string, password: string, id?: string)  {
     !id ? this.id = uuidv4() : this.id = id;
     this.name = name;
+    console.log(this.name);
+    console.log(name);
     this.email = email;
     this.password = password;
 

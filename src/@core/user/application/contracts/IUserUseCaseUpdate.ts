@@ -1,15 +1,15 @@
-export interface IUserUseCaseCreate {
-  create(params: IUserUseCaseCreate.Params): Promise<IUserUseCaseCreate.Result | Error>
+export interface IUserUseCaseUpdate {
+  update(params: IUserUseCaseUpdate.Params): Promise<IUserUseCaseUpdate.Result | Error>
 }
-export namespace IUserUseCaseCreate {
+export namespace IUserUseCaseUpdate {
   export type Params = {
+    id: string
     name: string
     email: string
     password: string
   }
   export type Result = {
     errors?: string
-    id: string
     name: string
     email: string
     password: string

@@ -1,0 +1,9 @@
+
+PUT http://localhost:3333/user-update/11071f30-bc67-4347-b5c9-8b9eb4bd7778
+Content-Type: application/json
+
+{
+  "name": "teste update",
+  "email": "testeteste.com",
+  "password": "123"
+}
