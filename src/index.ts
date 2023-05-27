@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import {server} from './config/server/server';
+import {router} from './config/routers/router';
 import {dataSource} from './config/database/dataSource';
 
 
@@ -10,5 +10,5 @@ import {dataSource} from './config/database/dataSource';
   await dataSource.initialize();
   console.log('database start');
 
-  server.listen(process.env.PORT, () => console.log(`app start port: ${process.env.PORT}`));
+  router.listen(process.env.PORT, () => console.log(`app start port: ${process.env.PORT}`));
 })();

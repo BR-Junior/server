@@ -3,7 +3,7 @@ import {UserUseCaseUpdate} from '../../../application/useCases/UserUseCaseUpdate
 import {Response} from 'express';
 
 
-export const UserControllerUpdate = async (req:Record<string, any>, res:Response) => {
+export const userControllerUpdate = async (req:Record<string, any>, res:Response) => {
   const userRepository = new UserRepository();
   const userUseCaseUpdate = new UserUseCaseUpdate(userRepository);
 

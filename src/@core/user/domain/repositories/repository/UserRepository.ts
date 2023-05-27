@@ -2,11 +2,13 @@ import {dataSource} from '../../../../../config/database/dataSource';
 import {User} from '../../../infra/database/User';
 import {IUserRepositoryCreate} from '../contracts/IUserRepositoryCreate';
 import {IUserRepositoryUpdate} from '../contracts/IUserRepositoryUpdate';
+import {IUserRepositoryFind} from '../contracts/IUserRepositoryFind';
 
 
 export class UserRepository implements
   IUserRepositoryCreate,
-  IUserRepositoryUpdate{
+  IUserRepositoryUpdate,
+  IUserRepositoryFind{
   public repoDb = dataSource.getRepository(User);
 
   async create(params: IUserRepositoryCreate.Params): Promise<IUserRepositoryCreate.Result | Error> {
@@ -33,5 +35,11 @@ export class UserRepository implements
     }catch (e) {
       return new Error('Query error');
     }
+  }
+
+  async find(params: IUserRepositoryFind.Params): Promise<IUserRepositoryFind.Result | Error> {
+    const find = await this.repoDb.findOneBy({id:params.id});
+    if (!find) return new Error('User not found');
+    return find;
   }
 }

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import {validation} from '../../../shared/services/validation/validation';
+import {validation} from '../../../_shared/services/validation/validation';
 import {userEntitySchema} from './validation/userEntitySchema';
 
 
