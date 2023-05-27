@@ -3,12 +3,14 @@ import {User} from '../../../infra/database/User';
 import {IUserRepositoryCreate} from '../contracts/IUserRepositoryCreate';
 import {IUserRepositoryUpdate} from '../contracts/IUserRepositoryUpdate';
 import {IUserRepositoryFind} from '../contracts/IUserRepositoryFind';
+import {IUserRepositoryDelete} from '../contracts/IUserRepositoryDelete';
 
 
 export class UserRepository implements
   IUserRepositoryCreate,
   IUserRepositoryUpdate,
-  IUserRepositoryFind{
+  IUserRepositoryFind,
+  IUserRepositoryDelete{
   public repoDb = dataSource.getRepository(User);
 
   async create(params: IUserRepositoryCreate.Params): Promise<IUserRepositoryCreate.Result | Error> {
@@ -38,8 +40,22 @@ export class UserRepository implements
   }
 
   async find(params: IUserRepositoryFind.Params): Promise<IUserRepositoryFind.Result | Error> {
-    const find = await this.repoDb.findOneBy({id:params.id});
-    if (!find) return new Error('User not found');
-    return find;
+    try {
+      const find = await this.repoDb.findOneBy({id:params.id});
+      if (!find) return new Error('User not found');
+      return find;
+    }catch (e) {
+      return new Error('Query error');
+    }
+  }
+
+  async delete(params: IUserRepositoryDelete.Params): Promise<IUserRepositoryDelete.Result | Error> {
+    try {
+      const {affected} = await this.repoDb.delete(params.id);
+      if (!affected) return new Error('false');
+      return true;
+    }catch (e) {
+      return new Error('Query error');
+    }
   }
 }

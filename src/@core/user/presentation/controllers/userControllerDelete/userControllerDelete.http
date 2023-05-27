@@ -1,0 +1,3 @@
+
+DELETE http://localhost:3333/user/da290309-fec8-4398-8324-8c14e4f45327
+Content-Type: application/json
