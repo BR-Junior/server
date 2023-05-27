@@ -1,0 +1,4 @@
+
+
+GET http://localhost:3333/user-search/teste?order=DESC
+Content-Type: application/json

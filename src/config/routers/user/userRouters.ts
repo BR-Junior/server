@@ -3,7 +3,8 @@ import {
   userControllerCreate,
   userControllerFind,
   userControllerUpdate,
-  userControllerDelete
+  userControllerDelete,
+  userControllerSearch
 } from '../../../@core/user/presentation/controllers';
 
 
@@ -17,5 +18,7 @@ userRouters.put('/user-update/:id', (req:Request, res:Response) => userControlle
 userRouters.get('/user/:id', (req:Request, res:Response) => userControllerFind(req, res));
 
 userRouters.delete('/user/:id', (req:Request, res:Response) => userControllerDelete(req, res));
+
+userRouters.get('/user-search/:name', (req:Request, res:Response) => userControllerSearch(req, res));
 
 export {userRouters};
