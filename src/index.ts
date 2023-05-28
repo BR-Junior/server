@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import {router} from './config/routers/router';
+import {router} from './routers/router';
 import {dataSource} from './config/database/dataSource';
 
 

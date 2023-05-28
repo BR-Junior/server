@@ -9,3 +9,4 @@ yaen-error.log
 .env
 .idea/vcs.xml
 yarn-error.log
+/coverage

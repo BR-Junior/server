@@ -5,7 +5,7 @@ import {
   userControllerUpdate,
   userControllerDelete,
   userControllerSearch
-} from '../../../@core/user/presentation/controllers';
+} from '../../@core/user/presentation/controllers';
 
 
 
