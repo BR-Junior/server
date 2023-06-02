@@ -1,5 +1,7 @@
+import {UserEntity} from '../../entity/UserEntity';
+
 export interface IUserRepositoryUpdate {
-  update(params: IUserRepositoryUpdate.Params): Promise<IUserRepositoryUpdate.Result | Error>
+  update(params: IUserRepositoryUpdate.Params): Promise<IUserRepositoryUpdate.Result>
 }
 export namespace IUserRepositoryUpdate {
   export type Params = {
@@ -8,9 +10,5 @@ export namespace IUserRepositoryUpdate {
     email: string
     password: string
   }
-  export type Result = {
-    name: string
-    email: string
-    password: string
-  }
+  export type Result = UserEntity | Error
 }

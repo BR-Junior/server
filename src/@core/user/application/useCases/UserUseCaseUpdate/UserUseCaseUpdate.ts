@@ -5,17 +5,15 @@ import {UserEntity} from '../../../domain/entity/UserEntity';
 export class UserUseCaseUpdate implements IUserUseCaseUpdate{
   constructor(private repoUseCase: IUserUseCaseUpdate) {
   }
-  async update(params: IUserUseCaseUpdate.Params): Promise<IUserUseCaseUpdate.Result | Error> {
+  async update(params: IUserUseCaseUpdate.Params): Promise<IUserUseCaseUpdate.Result> {
     try {
-      const entity = new UserEntity(
+      const entity = await new UserEntity(
         params.name,
         params.email,
         params.password,
         params.id
-      );
-
-      const isValid = await entity.validation();
-      if (isValid.errors) return isValid;
+      ).validation();
+      if (entity instanceof Error) return entity;
 
       return await this.repoUseCase.update(entity);
 

@@ -1,5 +1,7 @@
+import {UserEntity} from '../../domain/entity/UserEntity';
+
 export interface IUserUseCaseUpdate {
-  update(params: IUserUseCaseUpdate.Params): Promise<IUserUseCaseUpdate.Result | Error>
+  update(params: IUserUseCaseUpdate.Params): Promise<IUserUseCaseUpdate.Result>
 }
 export namespace IUserUseCaseUpdate {
   export type Params = {
@@ -8,10 +10,5 @@ export namespace IUserUseCaseUpdate {
     email: string
     password: string
   }
-  export type Result = {
-    errors?: string
-    name: string
-    email: string
-    password: string
-  }
+  export type Result = UserEntity | Error
 }

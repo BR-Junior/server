@@ -5,16 +5,15 @@ import {UserEntity} from '../../../domain/entity/UserEntity';
 export class UserUseCaseCreate implements IUserUseCaseCreate{
   constructor(private repoUseCase: IUserUseCaseCreate) {}
 
-  async create(params: IUserUseCaseCreate.Params): Promise<IUserUseCaseCreate.Result | Error> {
+  async create(params: IUserUseCaseCreate.Params): Promise<IUserUseCaseCreate.Result> {
     try {
-      const entity = new UserEntity(
+      const entity = await new UserEntity(
         params.name,
         params.email,
         params.password
-      );
+      ).validation();
 
-      const isValid = await entity.validation();
-      if (isValid.errors) return isValid;
+      if (entity instanceof Error) return entity;
 
       return await this.repoUseCase.create(entity);
 

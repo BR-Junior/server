@@ -1,5 +1,7 @@
+import {UserEntity} from '../../domain/entity/UserEntity';
+
 export interface IUserUseCaseCreate {
-  create(params: IUserUseCaseCreate.Params): Promise<IUserUseCaseCreate.Result | Error>
+  create(params: IUserUseCaseCreate.Params): Promise<IUserUseCaseCreate.Result>
 }
 export namespace IUserUseCaseCreate {
   export type Params = {
@@ -7,11 +9,5 @@ export namespace IUserUseCaseCreate {
     email: string
     password: string
   }
-  export type Result = {
-    errors?: string
-    id: string
-    name: string
-    email: string
-    password: string
-  }
+  export type Result = UserEntity | Error
 }

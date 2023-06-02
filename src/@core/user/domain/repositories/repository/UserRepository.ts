@@ -15,17 +15,17 @@ export class UserRepository implements
   IUserRepositorySearch{
   public repoDb = dataSource.getRepository(User);
 
-  async create(params: IUserRepositoryCreate.Params): Promise<IUserRepositoryCreate.Result | Error> {
+  async create(params: IUserRepositoryCreate.Params): Promise<IUserRepositoryCreate.Result> {
     try {
       const result = await this.repoDb.create(params);
-      return await this.repoDb.save(result);
+      return await this.repoDb.save(result) as IUserRepositoryCreate.Result;
 
     }catch (e) {
       return new Error('Query error');
     }
   }
 
-  async update(params: IUserRepositoryUpdate.Params): Promise<IUserRepositoryUpdate.Result | Error> {
+  async update(params: IUserRepositoryUpdate.Params): Promise<IUserRepositoryUpdate.Result> {
     try {
       await this.repoDb.update(params.id, params);
       const find = await this.repoDb.findOne({
@@ -34,7 +34,7 @@ export class UserRepository implements
         }
       });
       if (!find) return new Error('User not found');
-      return find;
+      return find as IUserRepositoryUpdate.Result;
 
     }catch (e) {
       return new Error('Query error');

@@ -14,7 +14,6 @@ export const userControllerUpdate = async (req:Record<string, any>, res:Response
     password: req.body.password
   });
 
-  if (result instanceof Error) return res.status(400).json(result.message);
-  if (result.errors) return res.status(400).json(result);
+  if (result instanceof Error) return res.status(400).json(JSON.parse(result.message));
   if (result) return res.status(200).json(result);  
 };

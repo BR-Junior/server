@@ -11,6 +11,7 @@ export const validation =  (data:any, schema:any ) => {
       // @ts-ignore
         errors[error.path] = error.message;
       });
-      return {errors};
+      const errorInstance = new Error(JSON.stringify(errors));
+      return errorInstance;
     });
 };
